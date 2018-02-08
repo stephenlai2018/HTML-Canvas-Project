@@ -1,0 +1,23 @@
+主題:how to resize canvas using javascript
+
+	使用 width, height 屬性決定 canvas 寬度和高度
+	
+		E.X
+			ctx.width = window.innerWidth; -> 也就是 100% 的網頁寬度
+			ctx.height = 300; -> 不需單位 px, em...
+			
+	畫矩形:
+		
+		ctx.fillStyle = "rgba(255, 0, 0, .3)";	// 指定物件填充顏色
+	
+		ctx.fillRect(x, y, width, height);
+		
+		說明:
+			x, y 座標餐位置是 canvas, 也就是說如果 canvas 的座標是 
+			
+			(200, 200) ~ (400, 400), ctx.fillRect(50, 100, 30, 50) 是
+			
+			x:250(200+50), y:300(200+100) 為起點畫出一個寬30px, 高50px
+			
+			的矩形.
+			

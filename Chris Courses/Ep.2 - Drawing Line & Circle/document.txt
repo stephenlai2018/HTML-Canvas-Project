@@ -1,0 +1,39 @@
+說明:
+	畫線程序:
+		
+		ctx.beginPath();  // 開始畫線
+		
+		ctx.moveTo(x, y); // 起始座標
+		
+		ctx.lineTo(x, y); // 終點座標
+		
+		ctx.strokStyle = "rgb(255, 0, 0)";  
+							
+						  // 指定顏色
+		
+		ctx.stroke();	  // 畫出線條
+		
+	畫圓程序:
+		
+		ctx.beginPath();  // 準備畫圖
+		
+		ctx.arc(300, 300, 30, 0, Math.PI*2, false); // 設定圓圈大小
+		
+		ctx.strokStyle = "rgb(255, 0, 0)";  
+							
+						  // 指定顏色
+		
+		ctx.stroke();	  // 畫出圓圈
+		
+	隨機畫圖:隨機產生 x, y 座標畫圓
+	
+		x 座標使用 Math.random() * innerWidth;
+		
+		y 座標使用 Math.random() * innerHeight;
+		
+		Math.random() 必須乘上 * innerWidth/ innerHeight, 不然就是從原點(0, 0)畫起
+		
+心得:
+
+	座標, 寬高度, 顏色, 次數都可用 Math.random()*value 產生隨機值, 讓畫面呈現意想不到的效果
+		

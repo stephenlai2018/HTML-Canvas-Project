@@ -1,0 +1,98 @@
+<html>
+	<head>
+		<title>Random Bouncing Balls</title>
+		
+		<style>
+			body{
+				margin:0;
+				padding:0;
+				//overflow:hidden;
+				
+			}
+		</style>
+		
+		
+	</head>
+	
+	<body></body>
+	
+	<script>
+		var cvs = document.createElement("canvas");
+		cvs.width = window.innerWidth;
+		cvs.height = window.innerHeight;
+		
+		var c = cvs.getContext("2d");// c is magic variable
+		document.body.appendChild(cvs);
+		
+		var requestAnimationFrame = window.requestAnimationFrame;
+		
+		function Circle(x, y, dx, dy, radius){// Capitalize 1st letter indicating this is a objcet(constructor pattern)
+			this.x = x;
+			this.y = y;
+			this.dx = dx;
+			this.dy = dy;
+			this.radius = radius;
+							
+			this.draw = ()=>{
+				c.beginPath();				
+				c.arc(this.x, this.y, this.radius, 0, Math.PI*2, false);
+				c.strokeStyle = "#00f";		
+				c.stroke();	
+				c.fillStyle = "rgb(0 , 255, 255)";
+				c.fill();
+			}
+			
+			this.update = ()=>{
+				if(this.x + this.radius > innerWidth || this.x - this.radius < 0){
+					this.dx = -this.dx;
+				}
+				
+				if(this.y + this.radius > innerHeight || this.y - this.radius < 0){
+					this.dy = -this.dy;
+				}
+				this.x += this.dx;
+				this.y += this.dy;
+				
+				this.draw();
+			}
+		}
+		
+		var circleArray = [];
+		
+		for(var i = 0; i < 100; i++){
+			var radius = Math.random() * 30;
+			var x = Math.random() * (innerWidth - radius * 2) + radius;//x-axis
+			var y = Math.random() * (innerHeight - radius * 2) + radius;//y-axis
+			var dx = ((Math.random() - .5) * 2);//velocity of x
+			var dy = ((Math.random() - .5) * 2);//velocity of y
+			circleArray.push(new Circle(x, y, dx, dy, radius));
+		}
+		console.log(circleArray);
+    
+    window.addEventListener('resize', function(){
+      cvs.width = window.innerWidth;
+			cvs.height = window.innerHeight;
+      for(var i = 0; i < circleArray.length; i++){
+				circleArray[i].update();
+			}
+    
+    }, true);
+				
+		function animate(){
+			requestAnimationFrame(animate);//recursive function
+			
+			c.clearRect(0, 0, innerWidth, innerHeight);
+			
+			for(var i = 0; i < circleArray.length; i++){
+				circleArray[i].update();
+			}
+			
+		}
+		animate();
+	</script>
+</html>
+
+
+
+
+

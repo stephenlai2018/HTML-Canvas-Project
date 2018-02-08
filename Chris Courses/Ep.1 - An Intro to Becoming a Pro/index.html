@@ -1,0 +1,47 @@
+<html>
+	<head>
+		<title>Canvas Resize</title>
+		
+		<style>
+			body{
+				//margin:0;
+				//padding:0;
+				//overflow:hidden;
+				
+			}
+			#cvs{
+				border:2px solid green;
+				position:relative;
+				top:200px;
+				left:200px;
+				/*background:linear-gradient*/
+				/*background:lightblue;*/
+			}
+		</style>
+		
+		
+	</head>
+	
+	<body>
+		<canvas id="cvs"></canvas>
+	</body>
+	
+	<script type="text/javascript">
+		var cvs = document.querySelector("canvas");
+		cvs.width = 300;//window.innerWidth;
+		cvs.height = 300;//window.innerHeight;
+		
+		var c = cvs.getContext("2d");
+		c.fillRect(200, 200, 50, 50);//x, y 座標以 canvas 為參考點計算, 並不是整個網頁喔!!!
+		c.fillRect(50, 200, 50, 50);
+		c.fillRect(100, 100, 50, 50);
+		
+		
+		
+	</script>
+</html>
+
+
+
+
+
